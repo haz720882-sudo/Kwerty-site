@@ -64,7 +64,37 @@ button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{ou
 <section class="card">
 <div class="tooltitle"><h2>01 / Domain RDAP</h2><span class="tag">LIVE LOOKUP</span></div>
 <p class="sub">Check public registration data for a domain name.</p>
-<form id="rdapForm" class="field"><input id="domain" placeholder="example.com" aria-label="Domain name" required><button>Lookup</button></form>
+<form id="rdapForm" class="field"><input id="domain" placeholder="example.com"
+<section class="card">
+  <h2>08 / Public People Search</h2>
+  <p class="sub">
+    Search public sources for historical figures, public officials,
+    authors, and other publicly documented subjects.
+  </p>
+
+  <form id="peopleForm" class="field">
+    <input
+      id="peopleName"
+      type="text"
+      placeholder="e.g. Napoleon Bonaparte"
+      aria-label="Name to search"
+      maxlength="120"
+      required
+    >
+    <button type="submit">Search sources</button>
+  </form>
+
+  <div id="peopleResults" class="result" aria-live="polite">
+    Enter a name to generate public-source search links.
+  </div>
+
+  <p class="small">
+    Search links are not identity verification. Results may refer
+    to different people with similar names. Do not use this tool
+    to seek private or sensitive personal information.
+  </p>
+</section>
+ aria-label="Domain name" required><button>Lookup</button></form>
 <div id="rdapResult" class="result">Enter a domain, then press Lookup.</div>
 </section>
 
@@ -238,6 +268,80 @@ try { localStorage.removeItem(noteKey); } catch(_) {}
 $('noteStatus').textContent='Notes cleared.';
 }
 });
+  
+document.getElementById('peopleForm').addEventListener('submit', function (event) {
+  event.preventDefault();
+
+  const input = document.getElementById('peopleName');
+  const results = document.getElementById('peopleResults');
+  const name = input.value.trim();
+
+  if (!name || name.length > 120) {
+    results.textContent = 'Enter a name up to 120 characters long.';
+    return;
+  }
+
+  const q = encodeURIComponent(name);
+
+  const sources = [
+    {
+      name: 'Google Search',
+      url: 'https://www.google.com/search?q=' + q
+    },
+    {
+      name: 'Google News',
+      url: 'https://news.google.com/search?q=' + q
+    },
+    {
+      name: 'Wikipedia',
+      url: 'https://en.wikipedia.org/w/index.php?search=' + q
+    },
+    {
+      name: 'Britannica',
+      url: 'https://www.google.com/search?q=' +
+        encodeURIComponent('site:britannica.com ' + name)
+    },
+    {
+      name: 'Official government sources',
+      url: 'https://www.google.com/search?q=' +
+        encodeURIComponent('site:gov ' + name)
+    },
+    {
+      name: 'University sources',
+      url: 'https://www.google.com/search?q=' +
+        encodeURIComponent('site:edu ' + name)
+    },
+    {
+      name: 'Internet Archive',
+      url: 'https://archive.org/search?query=' + q
+    }
+  ];
+
+  const heading = document.createElement('p');
+  heading.textContent = 'Public-source links for: ' + name;
+
+  const grid = document.createElement('div');
+  grid.className = 'links';
+
+  sources.forEach(function (source) {
+    const link = document.createElement('a');
+    link.href = source.url;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    link.textContent = source.name + ' ↗';
+    grid.appendChild(link);
+  });
+
+  const disclaimer = document.createElement('p');
+  disclaimer.className = 'small';
+  disclaimer.textContent =
+    'These links open third-party search services. Review the original ' +
+    'sources, publication dates, and context. Search results do not ' +
+    'establish identity or prove that separate records concern the same person.';
+
+  results.replaceChildren(heading, grid, disclaimer);
+});
+
 </script>
 </body>
 </html>
