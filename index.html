@@ -1,81 +1,243 @@
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kwerty | Future Software Engineer</title>
-  <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0b1020;
-      color: #f5f7ff;
-      line-height: 1.7;
-    }
-    header {
-      padding: 22px 8%;
-      border-bottom: 1px solid #26304a;
-      color: #7dd3fc;
-      font-weight: bold;
-      letter-spacing: 2px;
-    }
-    main {
-      max-width: 850px;
-      margin: auto;
-      padding: 90px 24px;
-    }
-    .tag { color: #7dd3fc; }
-    h1 {
-      font-size: clamp(38px, 8vw, 68px);
-      line-height: 1.1;
-      margin: 16px 0;
-    }
-    p { color: #b8c2dc; }
-    .button {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 12px 22px;
-      background: #7dd3fc;
-      color: #0b1020;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    section {
-      margin-top: 55px;
-      padding: 24px;
-      background: #131b30;
-      border: 1px solid #26304a;
-      border-radius: 14px;
-    }
-    footer {
-      padding: 28px;
-      text-align: center;
-      color: #8793ad;
-      border-top: 1px solid #26304a;
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="KWERTY OSINT — a privacy-conscious workspace for researching public websites and verifying open-source information.">
+<title>KWERTY OSINT // Open Source Intelligence</title>
+<style>
+:root{--bg:#080d12;--panel:#101820;--panel2:#0c131a;--line:#24343e;--text:#e6f1f5;--muted:#8ba1ad;--cyan:#42e8d5;--green:#9bffb2;--amber:#ffd479;--red:#ff8f9b}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at 15% 0%,#10252a 0,transparent 35%),var(--bg);color:var(--text);font:15px/1.55 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+a{color:var(--cyan);overflow-wrap:anywhere}
+button,input,select{font:inherit}
+button{cursor:pointer;background:#153039;border:1px solid #2d6a70;color:var(--cyan);border-radius:8px;padding:10px 13px}
+button:hover{background:#1b4149}
+button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+.wrap{max-width:1120px;margin:auto;padding:22px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding:10px 0 20px}
+.brand{font-size:19px;letter-spacing:2px;font-weight:800}
+.brand span{color:var(--cyan)}
+.status{font-size:11px;color:var(--green);border:1px solid #2b654c;border-radius:30px;padding:5px 9px}
+.hero{padding:30px 0 20px}
+.eyebrow{color:var(--cyan);font-size:12px;letter-spacing:2px}
+.hero h1{font-size:clamp(26px,5vw,44px);line-height:1.1;margin:8px 0 12px}
+.hero p{color:var(--muted);max-width:720px}
+.notice{background:#171a13;border:1px solid #4a4226;border-radius:10px;padding:12px 14px;color:#d6cda9;font-size:12px;margin:18px 0}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.card{background:linear-gradient(145deg,var(--panel),var(--panel2));border:1px solid var(--line);border-radius:13px;padding:18px;min-width:0}
+.card h2{font-size:16px;margin:0 0 4px}
+.sub{color:var(--muted);font-size:12px;margin:0 0 15px}
+.field{display:flex;gap:8px;flex-wrap:wrap}
+.field input,.field select{flex:1;min-width:130px;background:#080f14;color:var(--text);border:1px solid #31434e;border-radius:8px;padding:11px}
+.result{margin-top:14px;background:#080f14;border:1px solid #1d303a;border-radius:9px;padding:12px;min-height:50px;white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px;color:#c6d6dd}
+.result .muted{color:var(--muted)}
+.result .error{color:var(--red)}
+.result .ok{color:var(--green)}
+.links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.links a{display:block;text-decoration:none;background:#0a1218;border:1px solid #24343e;border-radius:8px;padding:10px;font-size:12px}
+.links a:hover{border-color:var(--cyan)}
+.small{font-size:11px;color:var(--muted)}
+.full{grid-column:1/-1}
+.footer{border-top:1px solid var(--line);margin-top:22px;padding:18px 0;color:var(--muted);font-size:11px}
+.tag{color:var(--green);font-size:11px}
+.tooltitle{display:flex;justify-content:space-between;gap:10px;align-items:start}
+@media(max-width:720px){.grid{grid-template-columns:1fr}.wrap{padding:14px}.hero{padding-top:22px}.links{grid-template-columns:1fr 1fr}.card{padding:15px}}
+</style>
 </head>
 <body>
-  <header>KWERTY.DEV</header>
-  <main>
-    <span class="tag">HELLO, WORLD!</span>
-    <h1>Future Software Engineer.</h1>
-    <p>Learning to code, building ideas, and creating my own future — one line at a time.</p>
-    <a class="button" href="#about">Discover my journey ↘</a>
+<div class="wrap">
+<header class="top">
+  <div class="brand">KWERTY<span>_</span>OSINT</div>
+  <div class="status">● PUBLIC-SOURCE WORKSPACE</div>
+</header>
 
-    <section id="about">
-      <h2>About This Project</h2>
-      <p>This is my personal web project as I begin my journey into software engineering. Every project is a chance to learn something new.</p>
-    </section>
+<section class="hero">
+  <div class="eyebrow">OPEN SOURCE INTELLIGENCE / TOOLKIT 001</div>
+  <h1>Investigate sources.<br><span style="color:var(--cyan)">Verify, don't assume.</span></h1>
+  <p>A browser-based workspace for checking public domain records, DNS records, and reputable search sources. No account required. No results are secretly uploaded to KWERTY.</p>
+  <div class="notice"><strong>Responsible use:</strong> Research domains and information you have a legitimate reason to examine. This tool does not identify private people, track live locations, bypass logins, or scrape private accounts. Public records can be incomplete or outdated.</div>
+</section>
 
-    <section>
-      <h2>My Mission</h2>
-      <p>Learn. Build. Improve. Repeat.</p>
-    </section>
-  </main>
-  <footer>© 2026 Kwerty · Built with curiosity and code.</footer>
+<div class="grid">
+<section class="card">
+<div class="tooltitle"><h2>01 / Domain RDAP</h2><span class="tag">LIVE LOOKUP</span></div>
+<p class="sub">Check public registration data for a domain name.</p>
+<form id="rdapForm" class="field"><input id="domain" placeholder="example.com" aria-label="Domain name" required><button>Lookup</button></form>
+<div id="rdapResult" class="result">Enter a domain, then press Lookup.</div>
+</section>
+
+<section class="card">
+<div class="tooltitle"><h2>02 / DNS Records</h2><span class="tag">LIVE LOOKUP</span></div>
+<p class="sub">Query public DNS over HTTPS for common record types.</p>
+<form id="dnsForm" class="field"><input id="dnsDomain" placeholder="example.com" aria-label="Domain for DNS lookup" required><select id="dnsType" aria-label="DNS record type"><option>A</option><option>AAAA</option><option>MX</option><option>NS</option><option>TXT</option><option>CNAME</option></select><button>Query DNS</button></form>
+<div id="dnsResult" class="result">DNS answers will appear here.</div>
+</section>
+
+<section class="card">
+<h2>03 / Public-source search</h2>
+<p class="sub">Open search pages to research public information. Search engines decide what is indexed.</p>
+<form id="searchForm" class="field"><input id="searchTerm" placeholder="A topic, organization, or public website" aria-label="Public search terms" required><button>Build searches</button></form>
+<div id="searchLinks" class="result">Enter a topic to create search links.</div>
+</section>
+
+<section class="card">
+<h2>04 / Username presence</h2>
+<p class="sub">Create direct public profile-search links. A link opening does not prove an account exists.</p>
+<form id="userForm" class="field"><input id="username" placeholder="public handle (no email/phone)" aria-label="Public username" required><button>Find links</button></form>
+<div id="userLinks" class="result">Use only public handles and respect each platform's rules.</div>
+</section>
+
+<section class="card">
+<h2>05 / Image verification</h2>
+<p class="sub">Use established reverse-image search services to check where an image may also appear.</p>
+<div class="links">
+<a href="https://lens.google.com/" target="_blank" rel="noopener noreferrer">Google Lens ↗</a>
+<a href="https://tineye.com/" target="_blank" rel="noopener noreferrer">TinEye ↗</a>
+<a href="https://images.google.com/" target="_blank" rel="noopener noreferrer">Google Images ↗</a>
+<a href="https://www.bing.com/visualsearch" target="_blank" rel="noopener noreferrer">Bing Visual Search ↗</a>
+</div>
+<p class="small">Upload only images you have permission to submit. Avoid uploading private or sensitive images.</p>
+</section>
+
+<section class="card">
+<h2>06 / URL safety checks</h2>
+<p class="sub">Open reputable tools to inspect a URL or domain. Do not submit private links or authenticated URLs.</p>
+<div class="links">
+<a href="https://transparencyreport.google.com/safe-browsing/search" target="_blank" rel="noopener noreferrer">Google Safe Browsing ↗</a>
+<a href="https://urlscan.io/" target="_blank" rel="noopener noreferrer">urlscan.io ↗</a>
+<a href="https://www.virustotal.com/gui/home/url" target="_blank" rel="noopener noreferrer">VirusTotal URL ↗</a>
+<a href="https://www.cloudflare.com/learning/dns/what-is-dns/" target="_blank" rel="noopener noreferrer">Learn about DNS ↗</a>
+</div>
+<p class="small">Third-party services have their own privacy and retention policies. Check them before submitting data.</p>
+</section>
+
+<section class="card full">
+<h2>07 / Investigation notes</h2>
+<p class="sub">Draft a small evidence log locally in this browser. Do not enter passwords, private personal details, or sensitive information.</p>
+<textarea id="notes" rows="4" style="width:100%;background:#080f14;color:var(--text);border:1px solid #31434e;border-radius:8px;padding:11px;font:inherit" placeholder="Source URL • date checked • what it says • independent corroboration • confidence/limitations"></textarea>
+<div class="field" style="margin-top:8px"><button id="saveNotes" type="button">Save notes on this device</button><button id="clearNotes" type="button">Clear notes</button><span id="noteStatus" class="small" aria-live="polite"></span></div>
+<p class="small">Notes are stored in this browser's local storage, not on a server. Avoid shared/public devices; clearing browser data may remove them.</p>
+</section>
+</div>
+
+<footer class="footer">KWERTY OSINT • Educational public-source research toolkit • No affiliation with linked services.<br>Always corroborate findings with multiple independent sources. A missing result is not proof that something does not exist.</footer>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+
+function safeDomain(raw) {
+let s = raw.trim().replace(/^https?:\/\//i,'').split(/[/?#]/)[0].replace(/:\d+$/,'').toLowerCase();
+if (!s || s.length > 253 || !s.includes('.') || /[^a-z0-9.-]/.test(s) || s.startsWith('.') || s.endsWith('.') || s.includes('..')) throw new Error('Enter a valid domain such as example.com (not a full URL).');
+const labels = s.split('.');
+if (labels.some(x => !x || x.length > 63 || x.startsWith('-') || x.endsWith('-'))) throw new Error('That domain format does not look valid.');
+return s;
+}
+
+function esc(s) {
+return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function show(id, html) {
+$(id).innerHTML = html;
+}
+
+function link(url,label) {
+return '<a href="'+esc(url)+'" target="_blank" rel="noopener noreferrer">'+esc(label)+' ↗</a>';
+}
+
+$('rdapForm').addEventListener('submit', async e => {
+e.preventDefault();
+show('rdapResult','Contacting public RDAP service…');
+try {
+const d = safeDomain($('domain').value);
+const res = await fetch('https://rdap.org/domain/'+encodeURIComponent(d),{headers:{'Accept':'application/rdap+json'}});
+if (!res.ok) throw new Error(res.status===404?'No RDAP record found. The domain may not be registered, or the registry may not provide this record.':'RDAP service returned HTTP '+res.status+'. Try again later.');
+const data = await res.json();
+const events = (data.events||[]).map(x=>`${x.eventAction||'event'}: ${x.eventDate||'date unavailable'}`).join('\n');
+const names = (data.nameservers||[]).map(x=>x.ldhName||'').filter(Boolean).join('\n')||'Not listed';
+const status = (data.status||[]).join(', ')||'Not listed';
+show('rdapResult','RDAP response received\nDomain: '+esc(data.ldhName||d)+'\nStatus: '+esc(status)+'\nNameservers:\n'+esc(names)+'\nEvents:\n'+esc(events||'Not listed')+'\n\n'+link('https://rdap.org/domain/'+encodeURIComponent(d),'Open raw RDAP record')+'\n\nContact details may be redacted. Dates and fields vary by registry.');
+} catch(err) {
+show('rdapResult','ERROR: '+esc(err.message||'Lookup failed. Check your connection and try again.'));
+}
+});
+
+$('dnsForm').addEventListener('submit', async e => {
+e.preventDefault();
+show('dnsResult','Querying Google Public DNS…');
+try {
+const d = safeDomain($('dnsDomain').value), type = $('dnsType').value;
+const url = 'https://dns.google/resolve?name='+encodeURIComponent(d)+'&type='+encodeURIComponent(type);
+const res = await fetch(url,{headers:{'Accept':'application/dns-json'}});
+if (!res.ok) throw new Error('DNS service returned HTTP '+res.status);
+const data = await res.json();
+const answers = (data.Answer||[]).map(a=>`Type ${a.type} | TTL ${a.TTL}\n${a.data}`).join('\n\n');
+const msg = data.Status===0 ? (answers||'No answers returned for this record type.') : ('DNS status code: '+data.Status+'. No successful answer returned.');
+show('dnsResult','Domain: '+esc(d)+'\nRecord type: '+esc(type)+'\n\n'+esc(msg)+'\n\n'+link(url,'Open DNS JSON response')+'\n\nDNS answers can vary by resolver and time.');
+} catch(err) {
+show('dnsResult','ERROR: '+esc(err.message||'DNS query failed.'));
+}
+});
+
+$('searchForm').addEventListener('submit',e => {
+e.preventDefault();
+const q = $('searchTerm').value.trim();
+if (!q) return;
+const encoded = encodeURIComponent(q);
+const items = [
+['Google Search','https://www.google.com/search?q='+encoded],
+['Bing Search','https://www.bing.com/search?q='+encoded],
+['Wikipedia','https://en.wikipedia.org/w/index.php?search='+encoded],
+['Internet Archive','https://web.archive.org/web/*/'+encodeURIComponent(q)],
+['Google results for official sites','https://www.google.com/search?q='+encodeURIComponent(q+' official website')],
+['Google news','https://news.google.com/search?q='+encoded]
+];
+show('searchLinks','<div class="links">'+items.map(([n,u])=>link(u,n)).join('')+'</div><p class="small">Review source quality and dates before drawing conclusions.</p>');
+});
+
+$('userForm').addEventListener('submit',e => {
+e.preventDefault();
+let u = $('username').value.trim().replace(/^@/,'');
+if (!/^[a-zA-Z0-9._-]{1,40}$/.test(u)) {
+show('userLinks','Use a public handle with letters, numbers, dots, underscores or hyphens only. Do not enter email addresses or phone numbers.');
+return;
+}
+const enc = encodeURIComponent(u);
+const items = [
+['GitHub','https://github.com/'+enc],
+['Reddit search','https://www.reddit.com/search/?q='+enc],
+['YouTube search','https://www.youtube.com/results?search_query='+enc],
+['TikTok search','https://www.tiktok.com/search?q='+enc],
+['Instagram search','https://www.google.com/search?q='+encodeURIComponent('site:instagram.com '+u)],
+['LinkedIn search','https://www.google.com/search?q='+encodeURIComponent('site:linkedin.com/in '+u)]
+];
+show('userLinks','<p class="small">These are search shortcuts only. They do not confirm identity or account ownership.</p><div class="links">'+items.map(([n,url])=>link(url,n)).join('')+'</div>');
+});
+
+const noteKey = 'kwerty_osint_notes_v1';
+try {
+$('notes').value = localStorage.getItem(noteKey)||'';
+} catch(_) {}
+
+$('saveNotes').addEventListener('click',() => {
+try {
+localStorage.setItem(noteKey,$('notes').value);
+$('noteStatus').textContent='Saved in this browser.';
+} catch(_) {
+$('noteStatus').textContent='Local storage unavailable; copy your notes somewhere safe.';
+}
+});
+
+$('clearNotes').addEventListener('click',() => {
+if (confirm('Clear the notes from this browser?')) {
+$('notes').value='';
+try { localStorage.removeItem(noteKey); } catch(_) {}
+$('noteStatus').textContent='Notes cleared.';
+}
+});
+</script>
 </body>
 </html>
